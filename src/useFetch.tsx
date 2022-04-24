@@ -8,7 +8,7 @@ interface responseObj {
 
 const useFetch = (url: string) => {
   const [state, setState] = useState<responseObj>({
-    data: [],
+    data: false,
     error: false,
     isPending: true,
   });
@@ -21,8 +21,8 @@ const useFetch = (url: string) => {
         if (!res.ok) {
           console.log("could not fetch the data for that resource");
         }
-        // return res.json();
-        return res;
+        return res.json();
+        // return res;
       })
       .then((data) => {
         setState({ data, error: false, isPending: false });
