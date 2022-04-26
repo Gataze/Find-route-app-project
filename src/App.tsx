@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { MapDetailsPriovider } from "./MapDetailsProvider";
 import { MapComponent } from "./MapComponent";
 import { FormComponent } from "./FormComponent";
+import "./basicStyles.css";
 
 function Map() {
   return (

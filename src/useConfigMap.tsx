@@ -1,14 +1,18 @@
 import H from "@here/maps-api-for-javascript";
 import { useEffect, useRef } from "react";
 
+//Configurtion file from Here-maps api documentation was used to create this custom hook. Some functions were added/changed in app developement process.
 export const useConfigMap = (
   platform: H.service.Platform,
   inputEl: React.MutableRefObject<HTMLDivElement>,
   storedData: any[] | null
 ) => {
+  const routeDetails: { current: { distance: number; duration: number } } =
+    useRef({ distance: 0, duration: 0 });
+
   // Set previous data to ensure that same data will not rerender the map
   function usePrevious(value: any[] | null) {
-    const ref: any = useRef();
+    const ref: { current: any } = useRef();
     useEffect(() => {
       ref.current = value;
     });
@@ -30,12 +34,7 @@ export const useConfigMap = (
     if (inputEl.current.children[0]) {
       inputEl.current.removeChild(inputEl.current.children[0]);
     }
-    // Remove previously rendered map
-    // if (inputEl.current.children[0])
-    //   inputEl.current.removeChild(inputEl.current.children[0]);
 
-    // Step 2: initialize a map - this map is centered over Berlin
-    // Do not render map if there is no data
     let map =
       storedData && !inputEl.current.children[0]
         ? new H.Map(inputEl.current, defaultLayers.vector.normal.map, {
@@ -112,23 +111,28 @@ export const useConfigMap = (
         duration += section.travelSummary.duration;
       });
 
+      routeDetails.current = { distance, duration };
+
       var summaryDiv = document.createElement("div"),
         content =
+          "<h4>Route details</h4> " +
           "<b>Total distance</b>: " +
-          distance +
-          "m. <br />" +
+          distance / 1000 +
+          "km. <br />" +
           "<b>Travel Time</b>: " +
           toMMSS(duration) +
           " (in current traffic)";
 
-      summaryDiv.style.fontSize = "small";
-      summaryDiv.style.marginLeft = "5%";
-      summaryDiv.style.marginRight = "5%";
-      summaryDiv.classList.add("asdfgh");
-      summaryDiv.style.marginTop = "10%";
+      summaryDiv.style.fontSize = "medium";
+      summaryDiv.style.marginLeft = "0%";
+      summaryDiv.style.marginTop = "2%";
+      summaryDiv.style.padding = "1%";
+      summaryDiv.style.border = "2px solid black";
       summaryDiv.innerHTML += content;
 
       inputEl.current.appendChild(summaryDiv);
+
+      console.log(inputEl.current.children[1]);
 
       if (inputEl.current.children.length > 2) {
         inputEl.current.removeChild(inputEl.current.children[1]);
@@ -145,4 +149,5 @@ export const useConfigMap = (
       calculateRouteFromAtoB(platform);
     }
   }, [storedData, inputEl, platform, prevAmount]);
+  return routeDetails;
 };
