@@ -6,7 +6,13 @@ interface responseObj {
   isPending: boolean;
 }
 
-const useFetch = (url: string) => {
+const useFetch = (
+  url: string,
+  url2: string,
+  start: string,
+  stop: string,
+  fetchFlag: boolean
+) => {
   const [state, setState] = useState<responseObj>({
     data: false,
     error: false,
@@ -14,31 +20,40 @@ const useFetch = (url: string) => {
   });
 
   useEffect(() => {
-    const abortCont = new AbortController();
+    if (start && stop && fetchFlag) {
+      const abortCont = new AbortController();
 
-    fetch(url, { signal: abortCont.signal })
-      .then((res) => {
-        if (!res.ok) {
-          console.log("could not fetch the data for that resource");
-        }
-        return res.json();
-        // return res;
-      })
-      .then((data) => {
-        setState({ data, error: false, isPending: false });
-      })
-      .catch((err) => {
-        if (err.name === "AbortError") {
-          return;
-        } else {
-          setState({ data: null, error: err.message, isPending: false });
-        }
-      });
+      console.log("fetching");
 
-    return () => abortCont.abort();
-  }, [url]);
+      Promise.all([
+        fetch(url, { signal: abortCont.signal }).then((res) => {
+          if (!res.ok) {
+            console.log("could not fetch the data for that resource");
+          }
+          return res.json();
+        }),
+        fetch(url2, { signal: abortCont.signal }).then((res) => {
+          if (!res.ok) {
+            console.log("could not fetch the data for that resource");
+          }
+          return res.json();
+        }),
+      ])
 
-  // console.log(state);
+        .then((data) => {
+          setState({ data, error: false, isPending: false });
+        })
+        .catch((err) => {
+          if (err.name === "AbortError") {
+            return;
+          } else {
+            setState({ data: null, error: err.message, isPending: false });
+          }
+        });
+
+      return () => abortCont.abort();
+    }
+  }, [url, url2, start, stop, fetchFlag]);
 
   return state;
 };

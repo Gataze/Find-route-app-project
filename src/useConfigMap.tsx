@@ -1,42 +1,66 @@
 import H from "@here/maps-api-for-javascript";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export const useConfigMap = (
   platform: H.service.Platform,
   inputEl: React.MutableRefObject<HTMLDivElement>,
-  startPosition: { lat: number; lng: number } | null
+  storedData: any[] | null
 ) => {
+  // Set previous data to ensure that same data will not rerender the map
+  function usePrevious(value: any[] | null) {
+    const ref: any = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+  const prevAmount = usePrevious(storedData);
+
   useEffect(() => {
-    const { lat, lng } = startPosition
-      ? startPosition
-      : { lat: 50.516, lng: 13.3779 };
+    const placePositions = storedData
+      ? [storedData![0].items[0].position, storedData![1].items[0].position]
+      : [];
+
+    const [startCords, stopCords] = placePositions ? placePositions : [];
 
     var defaultLayers = platform.createDefaultLayers();
 
     inputEl.current.innerHTML = "";
 
+    if (inputEl.current.children[0]) {
+      inputEl.current.removeChild(inputEl.current.children[0]);
+    }
+    // Remove previously rendered map
+    // if (inputEl.current.children[0])
+    //   inputEl.current.removeChild(inputEl.current.children[0]);
+
     // Step 2: initialize a map - this map is centered over Berlin
-    let map = new H.Map(inputEl.current, defaultLayers.vector.normal.map, {
-      center: { lat: 52.516, lng: 13.3779 },
-      zoom: 13,
-      pixelRatio: window.devicePixelRatio || 1,
-      padding: { top: 50, left: 50, bottom: 50, right: 50 },
-    });
+    // Do not render map if there is no data
+    let map =
+      storedData && !inputEl.current.children[0]
+        ? new H.Map(inputEl.current, defaultLayers.vector.normal.map, {
+            pixelRatio: window.devicePixelRatio || 1,
+            padding: { top: 50, left: 50, bottom: 50, right: 50 },
+          })
+        : null;
+
+    // add a resize listener to make sure that the map occupies the whole container
+    window.addEventListener("resize", () =>
+      map ? map.getViewPort().resize() : {}
+    );
 
     function calculateRouteFromAtoB(platform: H.service.Platform) {
       var router = platform.getRoutingService(undefined, 8),
         routeRequestParams = {
           routingMode: "fast",
           transportMode: "car",
-          origin: `${lat},${lng}`, // Brandenburg Gate
-          destination: "52.5206,13.3862", // Friedrichstraße Railway Station
+          origin: `${startCords.lat},${startCords.lng}`,
+          destination: `${stopCords.lat},${stopCords.lng}`,
           return:
             "polyline,turnByTurnActions,actions,instructions,travelSummary",
         };
 
-      if (startPosition) {
-        router.calculateRoute(routeRequestParams, onSuccess, onError);
-      }
+      router.calculateRoute(routeRequestParams, onSuccess, onError);
     }
 
     function addRouteShapeToMap(route: any) {
@@ -68,19 +92,21 @@ export const useConfigMap = (
 
       addRouteShapeToMap(route);
       addSummaryToPanel(route);
-      // addManueversToMap(route);
     }
 
     function onError(error: Error) {
       alert("Can't reach the remote server");
     }
 
-    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+    var behavior = map
+      ? new H.mapevents.Behavior(new H.mapevents.MapEvents(map))
+      : null;
 
     function addSummaryToPanel(route: any) {
       let duration = 0,
         distance = 0;
 
+      //tu długość trasy i czas
       route.sections.forEach((section: any) => {
         distance += section.travelSummary.length;
         duration += section.travelSummary.duration;
@@ -98,11 +124,15 @@ export const useConfigMap = (
       summaryDiv.style.fontSize = "small";
       summaryDiv.style.marginLeft = "5%";
       summaryDiv.style.marginRight = "5%";
-      summaryDiv.style.position = "relative";
+      summaryDiv.classList.add("asdfgh");
       summaryDiv.style.marginTop = "10%";
-      summaryDiv.innerHTML = content;
+      summaryDiv.innerHTML += content;
 
       inputEl.current.appendChild(summaryDiv);
+
+      if (inputEl.current.children.length > 2) {
+        inputEl.current.removeChild(inputEl.current.children[1]);
+      }
     }
 
     function toMMSS(duration: any) {
@@ -111,6 +141,8 @@ export const useConfigMap = (
       );
     }
 
-    calculateRouteFromAtoB(platform);
-  }, [startPosition]);
+    if (storedData) {
+      calculateRouteFromAtoB(platform);
+    }
+  }, [storedData, inputEl, platform, prevAmount]);
 };
