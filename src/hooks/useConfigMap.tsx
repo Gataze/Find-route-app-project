@@ -115,7 +115,7 @@ export const useConfigMap = (
 
       var summaryDiv = document.createElement("div"),
         content =
-          "<h4>Route details</h4> " +
+          "<h3>Route details</h3> " +
           "<b>Total distance</b>: " +
           distance / 1000 +
           "km. <br />" +

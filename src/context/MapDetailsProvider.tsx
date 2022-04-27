@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetch from "./useFetch";
+import useFetch from "../hooks/useFetch";
 
 interface ContextType {
   start: string;
@@ -13,7 +13,7 @@ interface ContextType {
   fetchFlag: boolean;
   setFetchFlag: (_: any) => void;
   data2: any;
-  historyRoute: any[];
+  history: any[];
   updateHistory: (_: any) => void;
 }
 
@@ -24,7 +24,7 @@ const MapDetails = createContext<ContextType>({
   fetchFlag: true,
   setFetchFlag: () => {},
   data2: false,
-  historyRoute: [],
+  history: [],
   updateHistory: () => {},
 });
 

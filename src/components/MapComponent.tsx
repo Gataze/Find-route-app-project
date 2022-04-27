@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useConfigMap } from "./useConfigMap";
+import { useConfigMap } from "../hooks/useConfigMap";
 import H from "@here/maps-api-for-javascript";
-import { useEffect, useRef } from "react";
-import { useMapDetails } from "./MapDetailsProvider";
+import React, { useRef } from "react";
+import { useMapDetails } from "../context/MapDetailsProvider";
 import { CalculatorComponent } from "./CalculatorComponent";
 
 export const MapComponent: React.FC = (props) => {
@@ -25,8 +25,9 @@ export const MapComponent: React.FC = (props) => {
       <h4>From: {startPlace}</h4>
       <h4>To: {stopPlace}</h4>
       <Link onClick={() => updateHistory({ startPlace, stopPlace })} to="/">
-        Go back
+        Go back {"\u2190"}
       </Link>
+
       <div
         className="map-container"
         ref={inputEl}

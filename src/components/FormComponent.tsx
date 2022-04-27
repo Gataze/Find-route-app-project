@@ -1,4 +1,4 @@
-import { useMapDetails } from "./MapDetailsProvider";
+import { useMapDetails } from "../context/MapDetailsProvider";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ export function FormComponent() {
   const startPlaceName = useRef() as React.MutableRefObject<HTMLInputElement>;
   const stopPlaceName = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const { start, stop, updateMapDetails, historyRoute } = useMapDetails();
+  const { start, stop, updateMapDetails, history } = useMapDetails();
 
   return (
     <div>
@@ -28,8 +28,8 @@ export function FormComponent() {
       {start && stop && <Link to="/map">Wróć do wyników</Link>}
       <h2>Historia Tras</h2>
       <ul>
-        {historyRoute &&
-          historyRoute.map((route, i) => (
+        {history &&
+          history.map((route, i) => (
             <li key={route + i}>
               <p>Starting point: {route.startPlace}</p>
               <p>End point: {route.stopPlace}</p>

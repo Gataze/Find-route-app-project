@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { MapDetailsPriovider } from "./MapDetailsProvider";
+import { MapDetailsPriovider } from "../context/MapDetailsProvider";
 import { MapComponent } from "./MapComponent";
 import { FormComponent } from "./FormComponent";
-import "./basicStyles.css";
+import "../styles/basicStyles.css";
 
 function Map() {
   return (
