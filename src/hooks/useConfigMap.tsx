@@ -71,6 +71,7 @@ export const useConfigMap = (
 
         // Create a polyline to display the route:
         let polyline = new H.map.Polyline(linestring, {
+          data: [],
           style: {
             lineWidth: 6,
             strokeColor: "rgba(0, 128, 255, 0.7)",
@@ -80,7 +81,7 @@ export const useConfigMap = (
         map?.addObject(polyline);
         // And zoom to its bounding rectangle
 
-        map?.getViewModel().setLookAtData({
+        map!.getViewModel().setLookAtData({
           bounds: polyline.getBoundingBox(),
         });
       });

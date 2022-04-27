@@ -19,8 +19,8 @@ export function FormComponent() {
           )
         }
       >
-        <label>Miejsce początkowe:</label>
-        <input type="text" ref={startPlaceName} />
+        <label htmlFor="start-input">Miejsce początkowe:</label>
+        <input id="start-input" type="text" ref={startPlaceName} />
         <label>Miejsce docelowe:</label>
         <input type="text" ref={stopPlaceName} />
         <input type="submit" />
