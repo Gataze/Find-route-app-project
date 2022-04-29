@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { useConfigMap } from "../hooks/useConfigMap";
-import H from "@here/maps-api-for-javascript";
+import * as H from "@here/maps-api-for-javascript";
+// (async () => {
+//   // Dynamically imported module (runtime)
+//   const H = import("@here/maps-api-for-javascript");
+// })();
+
 import React, { useRef } from "react";
 import { useMapDetails } from "../context/MapDetailsProvider";
 import { CalculatorComponent } from "./CalculatorComponent";
@@ -9,6 +14,7 @@ export const MapComponent: React.FC = (props) => {
   const inputEl = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const key = "iRlqOJYRE5_3AlvbQcOgZbRzQkr358KBNCDYYTFbTOE";
+  // const H = import("@here/maps-api-for-javascript");
   const platform = new H.service.Platform({
     apikey: key,
   });

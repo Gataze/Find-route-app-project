@@ -1,5 +1,15 @@
-import H from "@here/maps-api-for-javascript";
+import * as H from "@here/maps-api-for-javascript";
 import { useEffect, useRef } from "react";
+// var H = require("@here/maps-api-for-javascript");
+
+// const H = import("@here/maps-api-for-javascript");
+// import * as H from "@here/maps-api-for-javascript";
+
+// (async () => {
+//   // Dynamically imported module (runtime)
+//   const H = import("@here/maps-api-for-javascript");
+// })();
+
 
 //Configurtion file from Here-maps api documentation was used to create this custom hook. Some functions were added/changed in app developement process.
 export const useConfigMap = (
@@ -7,6 +17,7 @@ export const useConfigMap = (
   inputEl: React.MutableRefObject<HTMLDivElement>,
   storedData: any[] | null
 ) => {
+  
   const routeDetails: { current: { distance: number; duration: number } } =
     useRef({ distance: 0, duration: 0 });
 
@@ -19,6 +30,8 @@ export const useConfigMap = (
     return ref.current;
   }
   const prevAmount = usePrevious(storedData);
+
+
 
   useEffect(() => {
     const placePositions = storedData

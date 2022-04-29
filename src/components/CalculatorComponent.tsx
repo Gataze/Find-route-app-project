@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useRef } from "react";
 
 interface CalcProps {
   routeDetails: {
@@ -10,7 +10,7 @@ interface CalcProps {
 }
 
 export const CalculatorComponent: React.FC<CalcProps> = ({ routeDetails }) => {
-  const [kmCost, setKmCost] = useState<number | typeof NaN>(0);
+  const kmCostText = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [totalCost, setTotalCost] = useState<{
     cost: number | undefined;
     daysOfWork: number | undefined;
@@ -18,6 +18,8 @@ export const CalculatorComponent: React.FC<CalcProps> = ({ routeDetails }) => {
 
   function calculateCosts(e: FormEvent) {
     e.preventDefault();
+
+    const kmCost = parseFloat(kmCostText.current.value);
 
     const distanceInKm = Math.round(routeDetails.current.distance / 1000);
     const daysOfWork =
@@ -27,22 +29,15 @@ export const CalculatorComponent: React.FC<CalcProps> = ({ routeDetails }) => {
     const cost =
       Math.round((kmCost * distanceInKm * 1.1 + daysOfWork * 1000) * 100) / 100;
 
-    console.log(cost, daysOfWork);
-
     setTotalCost({ cost, daysOfWork });
   }
 
   return (
     <>
       <form onSubmit={(e) => calculateCosts(e)}>
-        <h3 className="calculatorHeader">Calculation of route costs</h3>
+        <h3 className="calculatorHeader">Calculations</h3>
         <label htmlFor="cost-input">Enter price per Km.</label>
-        <input
-          id="cost-input"
-          type="text"
-          value={kmCost}
-          onChange={(e) => setKmCost(+e.target.value)}
-        />
+        <input id="cost-input" type="number" step=".01" ref={kmCostText} />
         <div className="pContainer">
           <p>
             Price Multiplier: <b>110%</b>
@@ -63,7 +58,6 @@ export const CalculatorComponent: React.FC<CalcProps> = ({ routeDetails }) => {
             <b>{totalCost.cost ? totalCost.cost : "not calculated"}</b>
           </p>
         </div>
-
         <input className="pdfButton" type="submit" value="Calculate" />
         <button
           className="pdfButton"

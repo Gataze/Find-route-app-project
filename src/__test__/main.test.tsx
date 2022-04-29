@@ -1,9 +1,23 @@
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import { FormComponent } from "../components/FormComponent";
+import App from "../App";
+var exports = {};
+describe("Happy path", () => {
+  test("Form component after first render tests", () => {
+    render(<FormComponent />);
+    const startInput = screen.getByRole("textbox", {
+      name: /Set a start point/i,
+    });
+    const endInput = screen.getByRole("textbox", {
+      name: /Set your destination/i,
+    });
+    const headerTitle = screen.queryByRole("heading", { name: /history/i });
 
-test("renders learn react link", () => {
-  render(<FormComponent />);
-  const startInput = screen.getByRole("textbox", { name: /początkowe/i });
-  expect(startInput).toHaveTextContent("");
+    expect(startInput).toHaveTextContent("");
+    expect(endInput).toHaveTextContent("");
+    expect(headerTitle).not.toBeInTheDocument();
+  });
+  test("render app", () => {
+    render(<App />);
+  });
 });

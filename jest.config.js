@@ -1,7 +1,13 @@
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    '^.+\\.tsx?$': 'ts-jest',
+    "^.+\\.(js|jsx)$": "babel-jest"
   },
-  roots: ["<rootDir>/src/"],
+
+  transformIgnorePatterns: [ 
+    "node_modules/(?!@here/maps-api-for-javascript)"
+  ]
 };

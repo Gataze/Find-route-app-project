@@ -13,7 +13,7 @@ interface ContextType {
   fetchFlag: boolean;
   setFetchFlag: (_: any) => void;
   data2: any;
-  history: any[];
+  routeHistory: any[];
   updateHistory: (_: any) => void;
 }
 
@@ -24,7 +24,7 @@ const MapDetails = createContext<ContextType>({
   fetchFlag: true,
   setFetchFlag: () => {},
   data2: false,
-  history: [],
+  routeHistory: [],
   updateHistory: () => {},
 });
 
@@ -45,7 +45,7 @@ export function MapDetailsPriovider(props: any) {
   const [fetchFlag, setFetchFlag] = useState(true);
   const [data2, setData] = useState(false);
 
-  const [historyRoute, setHistoryRoute] = useState<any[]>([]);
+  const [routeHistory, setRouteHistory] = useState<any[]>([]);
 
   const key = "iRlqOJYRE5_3AlvbQcOgZbRzQkr358KBNCDYYTFbTOE";
   const url = `https://geocode.search.hereapi.com/v1/geocode?apikey=${key}&q=${start}`;
@@ -67,6 +67,11 @@ export function MapDetailsPriovider(props: any) {
       newStart: string,
       newStop: string
     ) {
+      if (!newStart && !newStop) {
+        e.preventDefault();
+        return;
+      }
+
       e.preventDefault();
       setStart(newStart);
       setStop(newStop);
@@ -76,11 +81,11 @@ export function MapDetailsPriovider(props: any) {
 
     const updateHistory = (historyList: any) => {
       if (
-        historyRoute.length === 0 ||
-        JSON.stringify(historyRoute[historyRoute.length - 1]) !==
+        routeHistory.length === 0 ||
+        JSON.stringify(routeHistory[routeHistory.length - 1]) !==
           JSON.stringify(historyList)
       ) {
-        setHistoryRoute((prevState) => [...prevState, historyList]);
+        setRouteHistory((prevState) => [...prevState, historyList]);
       }
       setFetchFlag(false);
     };
@@ -90,11 +95,11 @@ export function MapDetailsPriovider(props: any) {
       start,
       fetchFlag,
       data2,
-      historyRoute,
+      routeHistory,
       updateMapDetails,
       updateHistory,
     };
-  }, [stop, start, data2, fetchFlag, data, historyRoute, navigate]);
+  }, [stop, start, data2, fetchFlag, data, routeHistory, navigate]);
 
   return <MapDetails.Provider value={value} {...props} />;
 }

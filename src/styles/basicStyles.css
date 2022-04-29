@@ -3,9 +3,10 @@
   margin: 0 auto;
 }
 
+/* Map component */
+
 .map-component {
   padding: 20px;
-  border: 1px solid black;
 }
 
 .map-component h2 {
@@ -26,9 +27,9 @@
 }
 
 .map-component > form {
-  margin: 60px 0 0 0;
+  margin: 80px 0 0 0;
   border: 1px solid black;
-  padding: 0px 10px 10px;
+  padding: 10px 10px 10px;
 }
 
 .map-component > form .pContainer {
@@ -66,4 +67,43 @@
 
 .map-component .map-container > div:last-child > h4 {
   margin-top: 0 !important;
+}
+
+/* Form component */
+
+.form-component form {
+  display: flex;
+  flex-flow: column;
+  width: 200px;
+}
+
+.form-component form input {
+  margin-bottom: 10px;
+  margin-top: 3px;
+  padding: 5px;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.form-component form button {
+  margin: 10px 0;
+  background-color: white;
+  width: 130px;
+  padding: 5px;
+  border: 3px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-component ul {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.form-component li {
+  border: 1px solid black;
+  padding: 5px 20px;
 }

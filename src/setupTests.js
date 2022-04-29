@@ -1,6 +1,7 @@
 // import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
 import "@testing-library/jest-dom";
+import "jest-canvas-mock";
 // import { server } from "./mocks/server.js";
 // // Establish API mocking before all tests.
 // beforeAll(() => server.listen());
