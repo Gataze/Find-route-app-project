@@ -1,40 +1,46 @@
 import { useMapDetails } from "../context/MapDetailsProvider";
-import { useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Testfile from "./testfile"
+
 
 export function FormComponent() {
-  const startPlaceName = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const stopPlaceName = useRef() as React.MutableRefObject<HTMLInputElement>;
+  // const startPlaceName = useRef() as React.MutableRefObject<HTMLInputElement>;
+  // const stopPlaceName = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const { start, stop, updateMapDetails, routeHistory } = useMapDetails();
+  // const [places, setPlaces] = useState({
+  //   start: "",
+  //   stop: "",
+  // })
 
-  console.log(routeHistory);
+  const { places, setPlaces, updateMapDetails } = useMapDetails();
 
-  Testfile()
+
 
   return (
     <div className="form-component">
       <h2>Route Planner</h2>
+    
+     
       <form
         onSubmit={(e) =>
           updateMapDetails(
             e,
-            startPlaceName.current.value,
-            stopPlaceName.current.value
+            places.start,
+            places.stop
           )
         }
       >
         <label htmlFor="start-input">Set a start point</label>
-        <input id="start-input" type="text" ref={startPlaceName} />
+        <input id="start-input" type="text" value={places.start}  onChange={e => setPlaces((prevState: any) => {return {...prevState, start: e.target.value}}) }/>
         <label htmlFor="end-input">Set your destination</label>
-        <input id="end-input" type="text" ref={stopPlaceName} />
+        <input id="end-input" type="text" value={places.stop} onChange={e => setPlaces((prevState: any) => {return {...prevState, stop: e.target.value}}) } />
 
-        <button>Plan your route</button>
+        <button disabled={!places} >Plan your route</button>
       </form>
-      {start && stop && <Link to="/map">Show current route {"\u2190"}</Link>}
+      
+     <Link to="/map">Show current route {"\u2190"}</Link>
 
-      {routeHistory[0] && (
+      {/* {routeHistory[0] && (
         <ul>
           <h2>Search history</h2>
 
@@ -45,7 +51,9 @@ export function FormComponent() {
             </li>
           ))}
         </ul>
-      )}
+      )} */}
+
+
     </div>
   );
 }

@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 
 interface responseObj {
-  data: any;
+  data: [{items: [{position: {}}]},{items: [{position: {}}]}] | false;
   error: boolean;
   isPending: boolean;
 }
 
+
+
 const useFetch = (
   url: string,
   url2: string,
-  start: string,
-  stop: string,
-  fetchFlag: boolean
 ) => {
   const [state, setState] = useState<responseObj>({
     data: false,
@@ -20,7 +19,7 @@ const useFetch = (
   });
 
   useEffect(() => {
-    if (start && stop && fetchFlag) {
+    
       const abortCont = new AbortController();
 
       console.log("fetching");
@@ -40,20 +39,21 @@ const useFetch = (
         }),
       ])
 
-        .then((data) => {
-          setState({ data, error: false, isPending: false });
+        .then((data: [{items: [{position:{}}]},{items: [{position:{}}]}]) => {
+          
+          setState({data, error: false, isPending: false });
         })
         .catch((err) => {
           if (err.name === "AbortError") {
             return;
           } else {
-            setState({ data: null, error: err.message, isPending: false });
+            setState({ data: false, error: err.message, isPending: false });
           }
         });
 
       return () => abortCont.abort();
-    }
-  }, [url, url2, start, stop, fetchFlag]);
+    
+  }, [url, url2]);
 
   return state;
 };

@@ -1,23 +1,19 @@
-import * as H from "@here/maps-api-for-javascript";
+import H from "@here/maps-api-for-javascript";
 import { useEffect, useRef } from "react";
-// var H = require("@here/maps-api-for-javascript");
-
-// const H = import("@here/maps-api-for-javascript");
-// import * as H from "@here/maps-api-for-javascript";
-
-// (async () => {
-//   // Dynamically imported module (runtime)
-//   const H = import("@here/maps-api-for-javascript");
-// })();
 
 
-//Configurtion file from Here-maps api documentation was used to create this custom hook. Some functions were added/changed in app developement process.
-export const useConfigMap = (
-  platform: H.service.Platform,
-  inputEl: React.MutableRefObject<HTMLDivElement>,
-  storedData: any[] | null
-) => {
-  
+
+
+  //Configurtion file from Here-maps api documentation was used to create this custom hook. Some functions were added/changed in app developement process.
+  export const useConfigMap = (
+    platform: H.service.Platform,
+    inputEl: React.MutableRefObject<HTMLDivElement>,
+    storedData: any[] | null,
+    fetchFlag: boolean,
+  ) => {
+    
+
+  //Get distance and durration
   const routeDetails: { current: { distance: number; duration: number } } =
     useRef({ distance: 0, duration: 0 });
 
@@ -47,14 +43,15 @@ export const useConfigMap = (
     if (inputEl.current.children[0]) {
       inputEl.current.removeChild(inputEl.current.children[0]);
     }
-
     let map =
-      storedData && !inputEl.current.children[0]
+      fetchFlag && !inputEl.current.children[0]
         ? new H.Map(inputEl.current, defaultLayers.vector.normal.map, {
             pixelRatio: window.devicePixelRatio || 1,
             padding: { top: 50, left: 50, bottom: 50, right: 50 },
           })
         : null;
+
+    console.log(map)
 
     // add a resize listener to make sure that the map occupies the whole container
     window.addEventListener("resize", () =>
@@ -71,6 +68,8 @@ export const useConfigMap = (
           return:
             "polyline,turnByTurnActions,actions,instructions,travelSummary",
         };
+
+        console.log(router)
 
       router.calculateRoute(routeRequestParams, onSuccess, onError);
     }
@@ -94,14 +93,18 @@ export const useConfigMap = (
         map?.addObject(polyline);
         // And zoom to its bounding rectangle
 
-        map!.getViewModel().setLookAtData({
+        map?.getViewModel().setLookAtData({
           bounds: polyline.getBoundingBox(),
         });
       });
     }
 
     function onSuccess(result: any) {
+
+
       var route = result.routes[0];
+
+      console.log(route)
 
       addRouteShapeToMap(route);
       addSummaryToPanel(route);
@@ -123,8 +126,7 @@ export const useConfigMap = (
       route.sections.forEach((section: any) => {
         distance += section.travelSummary.length;
         duration += section.travelSummary.duration;
-      });
-
+      })
       routeDetails.current = { distance, duration };
 
       var summaryDiv = document.createElement("div"),
@@ -162,6 +164,9 @@ export const useConfigMap = (
     if (storedData) {
       calculateRouteFromAtoB(platform);
     }
-  }, [storedData, inputEl, platform, prevAmount]);
+
+    console.log("efefct start")
+
+  }, [storedData, inputEl, platform]);
   return routeDetails;
 };

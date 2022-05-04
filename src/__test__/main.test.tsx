@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { FormComponent } from "../components/FormComponent";
 import App from "../App";
-var exports = {};
+
 describe("Happy path", () => {
   test("Form component after first render tests", () => {
     render(<FormComponent />);

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -9,7 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "es6",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -19,9 +19,8 @@
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "outDir": "dist"
   },
-  "include": ["src", "globals.d.ts", "node_modules/@here/maps-api-for-javascript/bin/mapsjs.bundle.harp.js", "node_modules/@here/maps-api-for-javascript/bin/mapsjs.bundle.js"],
+  "include": ["src", "globals.d.ts", "node_modules/ZZ/Testfile.js"],
   "exclude": ["types", "dist/**/*"]
 }
-
 
 
