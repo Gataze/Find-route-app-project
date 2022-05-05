@@ -1,6 +1,8 @@
-import { useMapDetails } from "../context/MapDetailsProvider";
+import { Action, useMapDetails } from "../context/MapDetailsProvider";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Moment from 'react-moment';
+
 
 
 export function FormComponent() {
@@ -12,7 +14,7 @@ export function FormComponent() {
   //   stop: "",
   // })
 
-  const { places, setPlaces, updateMapDetails } = useMapDetails();
+  const { places, setPlaces, searches, dispatch, updateMapDetails } = useMapDetails();
 
 
 
@@ -40,18 +42,20 @@ export function FormComponent() {
       
      <Link to="/map">Show current route {"\u2190"}</Link>
 
-      {/* {routeHistory[0] && (
+      {searches && (
         <ul>
           <h2>Search history</h2>
 
-          {routeHistory.map((route, i) => (
-            <li key={route + i}>
-              <p>Starting point: {route.startPlace}</p>
-              <p>End point: {route.stopPlace}</p>
+          {searches.map((searchItem: any) => (
+            <li key={searchItem.id}>
+              <Moment date={searchItem.id} fromNow/>
+              <p>Starting point: {searchItem.start}</p>
+              <p>End point: {searchItem.stop}</p>
+              <button onClick={() => dispatch({type: Action.Delete, payload: searchItem.id})}>Delete</button>
             </li>
           ))}
         </ul>
-      )} */}
+      )}
 
 
     </div>
