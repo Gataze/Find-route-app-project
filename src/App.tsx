@@ -1,20 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { MapDetailsPriovider } from "./context/MapDetailsProvider";
-import { MapComponent } from "./components/MapComponent";
-import { FormComponent } from "./components/FormComponent";
+import { RouteDetailsPriovider } from "./context/RouteDetailsProvider";
+import { MapContainer } from "./components/MapComponents/MapContainer";
+import { FormComponent } from "./components/SearchFormComponent/FormComponent";
 import "./styles/basicStyles.css";
 
 function Map() {
+
   return (
     <Router>
-      <MapDetailsPriovider>
+      <RouteDetailsPriovider>
         <div className="App" style={{ width: "100%", height: "900px" }}>
           <Routes>
-            <Route path="/map" element={<MapComponent />} />
+            <Route path="/map" element={<MapContainer />} />
             <Route path="/" element={<FormComponent />} />
           </Routes>
         </div>
-      </MapDetailsPriovider>
+      </RouteDetailsPriovider>
     </Router>
   );
 }

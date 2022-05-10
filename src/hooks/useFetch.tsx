@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
-
-interface responseObj {
-  data: [{items: [{position: {}}]},{items: [{position: {}}]}] | false;
-  error: boolean;
-  isPending: boolean;
-}
-
-
+import { useCallback, useEffect, useState } from "react";
+import { responseObj } from "../models/fetchModel";
 
 const useFetch = (
   url: string,
   url2: string,
 ) => {
   const [state, setState] = useState<responseObj>({
-    data: false,
+    data: null,
     error: false,
     isPending: true,
   });
 
-  useEffect(() => {
-    
-      const abortCont = new AbortController();
+
+  const executeFetch = useCallback(() => {
+    const abortCont = new AbortController();
 
       console.log("fetching");
 
@@ -47,13 +40,18 @@ const useFetch = (
           if (err.name === "AbortError") {
             return;
           } else {
-            setState({ data: false, error: err.message, isPending: false });
+            setState({ data: null, error: err.message, isPending: false });
           }
         });
 
       return () => abortCont.abort();
+  },[url, url2])
+
+  useEffect(() => {
     
-  }, [url, url2]);
+    executeFetch()
+    
+  }, [executeFetch]);
 
   return state;
 };
