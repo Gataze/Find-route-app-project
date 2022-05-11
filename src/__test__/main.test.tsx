@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { FormComponent } from "../components/SearchFormComponent/FormComponent";
+import { FormComponent } from "../components/SearchFormPage/SearchPresentationComponents/FormComponent";
 import App from "../App";
 
 describe("Happy path", () => {
