@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RouteDetailsPriovider } from "./context/RouteDetailsProvider";
-import { MapContainer } from "./components/MapPage/MapContainer";
+import { MapPage } from "./components/MapPage/MapPage";
 import { SearchForm } from "./components/SearchFormPage/SearchForm";
 import "./styles/basicStyles.css";
-import { EnhancedMap } from "./components/MapPage/MapHoc";
 
 function Map() {
   return (
@@ -11,8 +10,8 @@ function Map() {
       <RouteDetailsPriovider>
         <div className="App" style={{ width: "100%", height: "900px" }}>
           <Routes>
-            <Route path="/map" element={<EnhancedMap />} />
             <Route path="/" element={<SearchForm />} />
+            <Route path="/map" element={<MapPage />} />
           </Routes>
         </div>
       </RouteDetailsPriovider>

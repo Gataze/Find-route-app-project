@@ -1,15 +1,15 @@
 import H from "@here/maps-api-for-javascript";
 import onResize from "simple-element-resize-detector";
 import { useEffect, useRef } from "react";
-import { useRouteDetails } from "../../context/RouteDetailsProvider";
-import { key } from "../../credentials/credentials";
+import { useRouteDetails } from "../context/RouteDetailsProvider";
+import { key } from "../credentials/credentials";
 import {
   addRouteShapeToMap,
   addSummaryToContext,
   toMMSS,
-} from "../../utils/MapUtils";
+} from "../utils/MapUtils";
 
-export const Map: React.FC<any> = ({ data }) => {
+export const useHereMapApi = (data: any) => {
   const { dispatch, setCurrentRoute } = useRouteDetails();
   const refEl = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -94,7 +94,7 @@ export const Map: React.FC<any> = ({ data }) => {
   return (
     <>
       <div
-        style={{ position: "relative", width: "100%", height: "400px" }}
+        style={{ position: "relative", width: "100%", height: "550px" }}
         ref={refEl}
       />
     </>
