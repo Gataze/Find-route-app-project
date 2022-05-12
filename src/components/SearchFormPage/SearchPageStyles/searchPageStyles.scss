@@ -1,0 +1,121 @@
+.searchPage {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.searchForm {
+  &__header {
+    color: rgb(87, 176, 206);
+    font-size: 32px;
+    &::after {
+      content: "(Powered by @Here maps api)";
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-flow: column;
+    gap: 25px;
+    width: 465px;
+    margin-top: 30px;
+    @media (max-width: 480px) {
+      width: 380px;
+    }
+  }
+
+  &__inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 3px solid rgb(87, 176, 206);
+    border-radius: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  &__input {
+    height: 40px;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    border-left: 2px solid rgb(87, 176, 206);
+    width: 270px;
+    text-align: center;
+    width: 270px;
+    @media (max-width: 480px) {
+      width: 190px;
+      font-size: 15px;
+    }
+  }
+
+  &__label {
+    text-align: left;
+    padding-left: 10px;
+    width: 200px;
+    font-weight: 600;
+    font-size: 18px;
+    @media (max-width: 480px) {
+      width: 150px;
+      font-size: 15px;
+    }
+  }
+
+  &__button {
+    width: 180px;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    border: 3px solid rgb(87, 176, 206);
+    border-radius: 10px;
+    font-weight: 600;
+    &:hover {
+      background-color: lightblue;
+    }
+  }
+}
+
+.routeHistory {
+  margin-top: 60px;
+  border-top: 2px solid rgb(87, 176, 206);
+
+  &__header {
+    color: rgb(87, 176, 206);
+    margin: 40px 0;
+    font-size: 26px;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column;
+    gap: 25px;
+    font-weight: 600;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  &__listItem {
+    display: flex;
+    border-bottom: 1px solid rgb(87, 176, 206);
+    padding-bottom: 10px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    height: 40px;
+    width: 40px;
+    margin-left: auto;
+    padding: 0;
+    border: none;
+  }
+
+  &__icon {
+    height: 40px;
+    width: 40px;
+    &:hover {
+      color: rgb(87, 176, 206);
+    }
+  }
+}

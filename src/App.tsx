@@ -1,18 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RouteDetailsPriovider } from "./context/RouteDetailsProvider";
 import { MapPage } from "./components/MapPage/MapPage";
-import { SearchForm } from "./components/SearchFormPage/SearchForm";
-import "./styles/basicStyles.css";
+import { SearchPage } from "./components/SearchFormPage/SearchPage";
+import "./styles/styles.css";
 
 function Map() {
   return (
     <Router>
       <RouteDetailsPriovider>
-        <div className="App" style={{ width: "100%", height: "900px" }}>
-          <Routes>
-            <Route path="/" element={<SearchForm />} />
-            <Route path="/map" element={<MapPage />} />
-          </Routes>
+        <div className="app">
+          <div className="app__container">
+            <Routes>
+              <Route path="/" element={<SearchPage />} />
+              <Route path="/map" element={<MapPage />} />
+            </Routes>
+          </div>
         </div>
       </RouteDetailsPriovider>
     </Router>

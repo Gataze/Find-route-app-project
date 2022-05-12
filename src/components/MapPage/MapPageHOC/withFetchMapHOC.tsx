@@ -2,8 +2,9 @@ import { useRouteDetails } from "../../../context/RouteDetailsProvider";
 import { key } from "../../../credentials/credentials";
 import useDoubleFetch from "../../../hooks/useDoubleFetch";
 import { Map } from "../MapPageSections/Map";
+import { FetchedDataProps } from "../../../models/fetchModel";
 
-const withFetchMapHOC = (Map: any) =>
+const withFetchMapHOC = (Map: React.FC<FetchedDataProps>) =>
   function Comp() {
     const { currentRoute } = useRouteDetails();
 

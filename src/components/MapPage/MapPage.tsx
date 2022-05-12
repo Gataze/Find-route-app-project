@@ -1,23 +1,24 @@
+import { Link } from "react-router-dom";
 import { RouteDetails } from "./MapPageSections/RouteDetails";
 import { RouteCost } from "./MapPageSections/RouteCost";
-import { Link } from "react-router-dom";
 import { useRouteDetails } from "../../context/RouteDetailsProvider";
 import { EnhancedMap } from "./MapPageHOC/withFetchMapHOC";
+import "./MapPageStyles/mapPageStyles.css";
 
 export function MapPage() {
   const { currentRoute } = useRouteDetails();
 
   return (
-    <div className="map-component">
-      <h2>Route Planner</h2>
-
-      <div>
+    <div className="mapPage">
+      <div className="mapPage__container">
+        <h2 className="mapPage__header">Route Planner</h2>
         <EnhancedMap />
         <RouteDetails currentRoute={currentRoute} />
         <RouteCost currentRoute={currentRoute} />
+        <Link className="mapPage__link" to="/">
+          Go back
+        </Link>
       </div>
-
-      <Link to="/">Go back</Link>
     </div>
   );
 }

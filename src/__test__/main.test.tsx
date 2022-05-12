@@ -1,10 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import { FormComponent } from "../components/SearchFormPage/SearchPresentationComponents/FormComponent";
+import { SearchForm } from "../components/SearchFormPage/SearchPresentationComponents/SearchForm";
 import App from "../App";
 
 describe("Happy path", () => {
   test("Form component after first render tests", () => {
-    render(<FormComponent />);
+    const places = { start: "szczecin", stop: "wrocław" };
+
+    render(
+      <SearchForm places={places} setPlaces={() => {}} getRoute={() => {}} />
+    );
     const startInput = screen.getByRole("textbox", {
       name: /Set a start point/i,
     });

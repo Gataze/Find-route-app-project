@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { responseObj } from "../models/fetchModel";
+import { ResponseObj } from "../models/fetchModel";
+import { FetchedData } from "../models/fetchModel";
 
 const useFetch = (url: string, url2: string) => {
-  const [state, setState] = useState<any>({
+  const [state, setState] = useState<ResponseObj>({
     data: null,
     error: false,
     isPending: true,
@@ -28,13 +29,9 @@ const useFetch = (url: string, url2: string) => {
       }),
     ])
 
-      .then(
-        (
-          data: [{ items: [{ position: {} }] }, { items: [{ position: {} }] }]
-        ) => {
-          setState({ data, error: false, isPending: false });
-        }
-      )
+      .then((data: FetchedData[]) => {
+        setState({ data, error: false, isPending: false });
+      })
       .catch((err) => {
         if (err.name === "AbortError") {
           return;

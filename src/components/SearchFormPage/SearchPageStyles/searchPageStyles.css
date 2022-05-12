@@ -1,0 +1,153 @@
+.searchPage {
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.searchForm__header {
+  color: #57b0ce;
+  font-size: 32px;
+}
+
+.searchForm__header::after {
+  content: "(Powered by @Here maps api)";
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.searchForm__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 25px;
+  width: 465px;
+  margin-top: 30px;
+}
+
+@media (max-width: 480px) {
+  .searchForm__container {
+    width: 380px;
+  }
+}
+
+.searchForm__inputContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  border: 3px solid #57b0ce;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.searchForm__input {
+  height: 40px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  border-left: 2px solid #57b0ce;
+  width: 270px;
+  text-align: center;
+  width: 270px;
+}
+
+@media (max-width: 480px) {
+  .searchForm__input {
+    width: 190px;
+    font-size: 15px;
+  }
+}
+
+.searchForm__label {
+  text-align: left;
+  padding-left: 10px;
+  width: 200px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+@media (max-width: 480px) {
+  .searchForm__label {
+    width: 150px;
+    font-size: 15px;
+  }
+}
+
+.searchForm__button {
+  width: 180px;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  border: 3px solid #57b0ce;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.searchForm__button:hover {
+  background-color: lightblue;
+}
+
+.routeHistory {
+  margin-top: 60px;
+  border-top: 2px solid #57b0ce;
+}
+
+.routeHistory__header {
+  color: #57b0ce;
+  margin: 40px 0;
+  font-size: 26px;
+}
+
+.routeHistory__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 25px;
+  font-weight: 600;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.routeHistory__listItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #57b0ce;
+  padding-bottom: 10px;
+}
+
+.routeHistory__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  height: 40px;
+  width: 40px;
+  margin-left: auto;
+  padding: 0;
+  border: none;
+}
+
+.routeHistory__icon {
+  height: 40px;
+  width: 40px;
+}
+
+.routeHistory__icon:hover {
+  color: #57b0ce;
+}
+/*# sourceMappingURL=searchPageStyles.css.map */

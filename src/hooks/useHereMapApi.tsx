@@ -8,8 +8,9 @@ import {
   addSummaryToContext,
   toMMSS,
 } from "../utils/MapUtils";
+import { FetchedData } from "../models/fetchModel";
 
-export const useHereMapApi = (data: any) => {
+export const useHereMapApi = (data: FetchedData[]) => {
   const { dispatch, setCurrentRoute } = useRouteDetails();
   const refEl = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -94,7 +95,11 @@ export const useHereMapApi = (data: any) => {
   return (
     <>
       <div
-        style={{ position: "relative", width: "100%", height: "550px" }}
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "480px",
+        }}
         ref={refEl}
       />
     </>

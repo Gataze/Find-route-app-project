@@ -1,0 +1,101 @@
+.mapPage {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.mapPage__container {
+  margin: auto 0;
+  border: 3px solid #57b0ce;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.mapPage__header {
+  color: #3993b1;
+  font-size: 30px;
+  margin-top: 8px;
+  position: relative;
+}
+
+.mapPage__header::after {
+  content: "(Powered by @Here maps api)";
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.mapPage__link {
+  color: black;
+  margin-top: 15px;
+}
+
+.routeCost {
+  border-top: 1px solid #40b1d6;
+  border-bottom: 1px solid #40b1d6;
+  padding: 20px 10px;
+}
+
+.routeCost__header {
+  color: #3993b1;
+  margin-top: 0px;
+}
+
+.routeCost__priceInput {
+  width: 60px;
+  margin-left: 10px;
+  height: 25px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  background-color: transparent;
+  border: 3px solid #40b1d6;
+}
+
+.routeCost__list {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.routeCost__button {
+  width: 135px;
+  margin-right: 30px;
+  height: 40px;
+  border: 3px solid #40b1d6;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.routeCost__button:hover {
+  background-color: white;
+}
+
+.routeDetails {
+  border-top: 1px solid #40b1d6;
+  padding: 20px 10px;
+  margin: 20px 0 0;
+}
+
+.routeDetails__header {
+  color: #3993b1;
+  margin-top: 0px;
+}
+
+.routeDetails__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  font-size: 18px;
+}
+/*# sourceMappingURL=mapPageStyles.css.map */

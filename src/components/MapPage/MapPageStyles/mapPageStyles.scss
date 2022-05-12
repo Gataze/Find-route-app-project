@@ -1,0 +1,88 @@
+.mapPage {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+
+  &__container {
+    margin: auto 0;
+    border: 3px solid rgb(87, 176, 206);
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+
+  &__header {
+    color: rgb(57, 147, 177);
+    font-size: 30px;
+    margin-top: 8px;
+    position: relative;
+    &::after {
+      content: "(Powered by @Here maps api)";
+
+      font-size: 14px;
+      margin-left: 10px;
+    }
+  }
+
+  &__link {
+    color: black;
+    margin-top: 15px;
+  }
+}
+
+.routeCost {
+  border-top: 1px solid rgb(64, 177, 214);
+  border-bottom: 1px solid rgb(64, 177, 214);
+  padding: 20px 10px;
+
+  &__header {
+    color: rgb(57, 147, 177);
+    margin-top: 0px;
+  }
+
+  &__priceInput {
+    width: 60px;
+    margin-left: 10px;
+    height: 25px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    background-color: transparent;
+    border: 3px solid rgb(64, 177, 214);
+  }
+
+  &__list {
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+
+  &__button {
+    width: 135px;
+    margin-right: 30px;
+    height: 40px;
+    border: 3px solid rgb(64, 177, 214);
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+
+.routeDetails {
+  border-top: 1px solid rgb(64, 177, 214);
+  padding: 20px 10px;
+  margin: 20px 0 0;
+
+  &__header {
+    color: rgb(57, 147, 177);
+    margin-top: 0px;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column;
+    font-size: 18px;
+  }
+}

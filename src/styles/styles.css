@@ -1,0 +1,11 @@
+.app {
+  margin: 0 auto;
+  background-color: #eeeeee;
+  height: 100vh;
+}
+
+.app__container {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+/*# sourceMappingURL=styles.css.map */
