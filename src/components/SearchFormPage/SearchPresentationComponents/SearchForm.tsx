@@ -20,7 +20,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
             value={places.start}
             placeholder="Start location..."
             onChange={(e) =>
-              setPlaces((prevState: any) => {
+              setPlaces((prevState: { start: string; stop: string }) => {
                 return { ...prevState, start: e.target.value };
               })
             }
@@ -37,7 +37,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
             value={places.stop}
             placeholder="Stop location..."
             onChange={(e) =>
-              setPlaces((prevState: any) => {
+              setPlaces((prevState: { start: string; stop: string }) => {
                 return { ...prevState, stop: e.target.value };
               })
             }

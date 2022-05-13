@@ -32,13 +32,15 @@ export function useRouteDetails() {
   return context;
 }
 
-export function RouteDetailsPriovider(props: any) {
+export const RouteDetailsPriovider: React.FC<
+  React.HTMLAttributes<HTMLDivElement>
+> = (props: any) => {
   let navigate = useNavigate();
   const [routesHistory, dispatch] = useReducer(reducer, []);
   const [currentRoute, setCurrentRoute] = useState({});
 
   const value = useMemo(() => {
-    function getRoute(places: any) {
+    function getRoute(places: { start: string; stop: string }) {
       if (!places.start && !places.stop) {
         return;
       }
@@ -56,4 +58,4 @@ export function RouteDetailsPriovider(props: any) {
   }, [navigate, routesHistory, dispatch, currentRoute]);
 
   return <MapDetails.Provider value={value} {...props} />;
-}
+};

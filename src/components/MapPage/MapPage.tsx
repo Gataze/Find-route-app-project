@@ -12,8 +12,11 @@ export function MapPage() {
     <div className="mapPage">
       <div className="mapPage__container">
         <h2 className="mapPage__header">Route Planner</h2>
+
         <EnhancedMap />
-        <RouteDetails currentRoute={currentRoute} />
+        {currentRoute.exactStartPlace && (
+          <RouteDetails currentRoute={currentRoute} />
+        )}
         <RouteCost currentRoute={currentRoute} />
         <Link className="mapPage__link" to="/">
           Go back

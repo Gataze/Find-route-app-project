@@ -4,7 +4,7 @@ import { MapPage } from "./components/MapPage/MapPage";
 import { SearchPage } from "./components/SearchFormPage/SearchPage";
 import "./styles/styles.css";
 
-function Map() {
+function App() {
   return (
     <Router>
       <RouteDetailsPriovider>
@@ -21,4 +21,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default App;

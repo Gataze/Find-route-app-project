@@ -44,7 +44,7 @@ export function addSummaryToContext(route: any, data: any, dispatch: any) {
 }
 
 //Time converter from ... to ...
-export function toMMSS(duration: any) {
+export function toMMSS(duration: number) {
   return (
     Math.floor(duration / 60) + " minutes " + (duration % 60) + " seconds."
   );

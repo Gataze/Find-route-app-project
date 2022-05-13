@@ -1,7 +1,7 @@
-
 import "@testing-library/jest-dom/extend-expect";
 import "@testing-library/jest-dom";
 import "jest-canvas-mock";
+import "@here/maps-api-for-javascript";
 // import { server } from "./mocks/server.js";
 // // Establish API mocking before all tests.
 // beforeAll(() => server.listen());
@@ -12,3 +12,7 @@ import "jest-canvas-mock";
 
 // // Clean up after the tests are finished.
 // afterAll(() => server.close());
+
+// const asd = "ref";
+
+window.URL.createObjectURL = function () {};

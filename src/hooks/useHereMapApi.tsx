@@ -9,6 +9,7 @@ import {
   toMMSS,
 } from "../utils/MapUtils";
 import { FetchedData } from "../models/fetchModel";
+import { CurrentRoute } from "../models/contextModel";
 
 export const useHereMapApi = (data: FetchedData[]) => {
   const { dispatch, setCurrentRoute } = useRouteDetails();
@@ -37,12 +38,10 @@ export const useHereMapApi = (data: FetchedData[]) => {
     });
 
     let layers = platform.createDefaultLayers();
-    let map = startLat
-      ? new H.Map(refEl.current, layers.vector.normal.map, {
-          pixelRatio: window.devicePixelRatio,
-          padding: { top: 50, left: 50, bottom: 50, right: 50 },
-        })
-      : null;
+    let map = new H.Map(refEl.current, layers.vector.normal.map, {
+      pixelRatio: window.devicePixelRatio,
+      padding: { top: 50, left: 50, bottom: 50, right: 50 },
+    });
 
     onResize(refEl.current, () => {
       map?.getViewPort().resize();
@@ -66,18 +65,19 @@ export const useHereMapApi = (data: FetchedData[]) => {
 
     function onSuccess(result: any) {
       var route = result.routes[0];
+      console.log(route);
       addRouteShapeToMap(route, map);
       addSummaryToContext(route, data, dispatch);
       route?.sections.forEach(
         (section: { travelSummary: { length: string; duration: string } }) => {
-          setCurrentRoute((prevState: any) =>
+          setCurrentRoute!((prevState: CurrentRoute) =>
             prevState
               ? {
                   ...prevState,
                   exactStartPlace,
                   exactStopPlace,
                   distance: +section.travelSummary.length / 1000,
-                  duration: toMMSS(section.travelSummary.duration),
+                  duration: toMMSS(+section.travelSummary.duration),
                 }
               : prevState
           );

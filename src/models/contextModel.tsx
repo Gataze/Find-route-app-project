@@ -1,4 +1,4 @@
-export interface CurrentRouteProps {
+export interface CurrentRoute {
   currentRoute: {
     start: string;
     stop: string;
@@ -9,9 +9,26 @@ export interface CurrentRouteProps {
   };
 }
 
+export interface RoutesHistory {
+  startPlace: {
+    title: string;
+    id: string;
+    position: { lat: number; lng: number };
+  };
+  stopPlace: {
+    title: string;
+    id: string;
+    position: { lat: number; lng: number };
+  };
+  distance: number;
+  duration: number;
+  id: number;
+  loaded: boolean;
+}
+
 export interface RoutesHistoryProps {
   dispatch: (a: any) => void;
-  routesHistory: any[];
+  routesHistory: RoutesHistory[];
 }
 
 export interface SearchFormProps {
@@ -31,6 +48,6 @@ export interface ContextType {
   };
   setCurrentRoute: (a: any) => void;
   dispatch: (a: any) => void;
-  routesHistory: any[];
+  routesHistory: RoutesHistory[];
   getRoute: (a: any) => void;
 }

@@ -3,7 +3,10 @@ import Moment from "react-moment";
 import Icon from "@mdi/react";
 import { mdiTrashCanOutline } from "@mdi/js";
 import { Action } from "../../../models/actionModel";
-import { RoutesHistoryProps } from "../../../models/contextModel";
+import {
+  RoutesHistoryProps,
+  RoutesHistory,
+} from "../../../models/contextModel";
 
 export const RouteHistory: React.FC<RoutesHistoryProps> = ({
   routesHistory,
@@ -11,10 +14,12 @@ export const RouteHistory: React.FC<RoutesHistoryProps> = ({
 }) => {
   return (
     <div className="routeHistory">
-      <h2 className="routeHistory__header">Search history</h2>
+      {routesHistory[0] && (
+        <h2 className="routeHistory__header">Search history</h2>
+      )}
       {routesHistory[0] && (
         <ol className="routeHistory__list">
-          {routesHistory.map((searchItem: any) => (
+          {routesHistory.map((searchItem: RoutesHistory) => (
             <li className="routeHistory__listItem" key={searchItem.id}>
               <div className="routeHistory__listContent">
                 <Moment date={searchItem.id} fromNow />

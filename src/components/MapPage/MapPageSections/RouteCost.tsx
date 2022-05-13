@@ -1,8 +1,8 @@
 import { calculateCosts } from "../../../utils/MapUtils";
 import { useRef, useState } from "react";
-import { CurrentRouteProps } from "../../../models/contextModel";
+import { CurrentRoute } from "../../../models/contextModel";
 
-export const RouteCost: React.FC<CurrentRouteProps> = ({ currentRoute }) => {
+export const RouteCost: React.FC<CurrentRoute> = ({ currentRoute }) => {
   const kmCostText = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [totalCost, setTotalCost] = useState<{
     cost: number | undefined;
