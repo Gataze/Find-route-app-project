@@ -14,7 +14,6 @@
 .mapPage__container {
   margin: auto 0;
   border: 3px solid #57b0ce;
-  border-radius: 10px;
   padding: 10px 20px;
 }
 
@@ -68,7 +67,6 @@
   margin-right: 30px;
   height: 40px;
   border: 3px solid #40b1d6;
-  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
 }

@@ -44,7 +44,9 @@ export const RouteCost: React.FC<CurrentRoute> = ({ currentRoute }) => {
           </li>
           <li className="routeCost__listItem">
             Estimated road transport cost (PLN):{" "}
-            <b>{totalCost.cost ? totalCost.cost : "not calculated"} PLN</b>
+            <b>
+              {totalCost.cost ? `${totalCost.cost} PLN` : "not calculated"}{" "}
+            </b>
           </li>
         </ul>
         <button

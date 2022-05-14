@@ -51,3 +51,8 @@ export interface ContextType {
   routesHistory: RoutesHistory[];
   getRoute: (a: any) => void;
 }
+
+export enum Action {
+  Add,
+  Delete,
+}

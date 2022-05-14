@@ -7,7 +7,6 @@
   &__container {
     margin: auto 0;
     border: 3px solid rgb(87, 176, 206);
-    border-radius: 10px;
     padding: 10px 20px;
   }
 
@@ -61,7 +60,6 @@
     margin-right: 30px;
     height: 40px;
     border: 3px solid rgb(64, 177, 214);
-    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     &:hover {

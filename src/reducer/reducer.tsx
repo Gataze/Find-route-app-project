@@ -1,5 +1,4 @@
-import { Action } from "../models/actionModel";
-import { CurrentRoute } from "../models/contextModel";
+import { CurrentRoute, Action } from "../models/contextModel";
 
 export function reducer(
   searches: any,
