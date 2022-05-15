@@ -12,6 +12,7 @@ export function SearchPage() {
     <div className="searchPage">
       <SearchForm places={places} setPlaces={setPlaces} getRoute={getRoute} />
       <RouteHistory routesHistory={routesHistory} dispatch={dispatch} />
+      <div>sss{process.env.REACT_APP_MY_API_KEY}</div>
     </div>
   );
 }

@@ -24,10 +24,15 @@
     "@types/node": "^16.11.27",
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.2",
+    "axios": "^0.27.2",
     "babel-jest": "^28.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "jest-canvas-mock": "^2.4.0",
     "loadash": "^1.0.0",
     "moment": "^2.29.3",
+    "netlify-cli": "^10.3.1",
     "react": "^18.0.0",
     "react-app-rewired": "^2.2.1",
     "react-dom": "^18.0.0",
@@ -38,7 +43,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start:frontend": "react-app-rewired start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

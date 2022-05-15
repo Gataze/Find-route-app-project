@@ -12,8 +12,6 @@ const useFetch = (url: string, url2: string) => {
   const executeFetch = useCallback(() => {
     const abortCont = new AbortController();
 
-    console.log("fetching");
-
     Promise.all([
       fetch(url, { signal: abortCont.signal }).then((res) => {
         if (!res.ok) {

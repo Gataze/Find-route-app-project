@@ -2,7 +2,7 @@ import H from "@here/maps-api-for-javascript";
 import onResize from "simple-element-resize-detector";
 import { useEffect, useRef } from "react";
 import { useRouteDetails } from "../context/RouteDetailsProvider";
-import { key } from "../credentials/credentials";
+
 import {
   addRouteShapeToMap,
   addSummaryToContext,
@@ -34,7 +34,7 @@ export const useHereMapApi = (data: FetchedData[]) => {
     } = data[1];
 
     const platform = new H.service.Platform({
-      apikey: key,
+      apikey: process.env.REACT_APP_MY_API_KEY!,
     });
 
     let layers = platform.createDefaultLayers();
@@ -56,8 +56,7 @@ export const useHereMapApi = (data: FetchedData[]) => {
           transportMode: "truck",
           origin: `${startLat},${startLng}`,
           destination: `${stopLat},${stopLng}`,
-          return:
-            "polyline,turnByTurnActions,actions,instructions,travelSummary",
+          return: "polyline,travelSummary",
         };
 
       router.calculateRoute(routeRequestParams, onSuccess, onError);
@@ -65,7 +64,6 @@ export const useHereMapApi = (data: FetchedData[]) => {
 
     function onSuccess(result: any) {
       var route = result.routes[0];
-      console.log(route);
       addRouteShapeToMap(route, map);
       addSummaryToContext(route, data, dispatch);
       route?.sections.forEach(
