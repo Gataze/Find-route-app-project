@@ -7,7 +7,8 @@ const withFetchMapHOC = (Map: React.FC<FetchedDataProps>) =>
   function Comp() {
     const { currentRoute } = useRouteDetails();
 
-    const key = process.env.REACT_APP_MY_API_KEY;
+    //API key is limited to trusted domains.
+    const key = "iRlqOJYRE5_3AlvbQcOgZbRzQkr358KBNCDYYTFbTOE";
 
     const startUrl = `https://geocode.search.hereapi.com/v1/geocode?apikey=${key}&q=${currentRoute.start}`;
     const stopUrl = `https://geocode.search.hereapi.com/v1/geocode?apikey=${key}&q=${currentRoute.stop}`;

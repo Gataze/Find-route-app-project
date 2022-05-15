@@ -33,8 +33,9 @@ export const useHereMapApi = (data: FetchedData[]) => {
       ],
     } = data[1];
 
+    //API key is limited to trusted domains.
     const platform = new H.service.Platform({
-      apikey: process.env.REACT_APP_MY_API_KEY!,
+      apikey: "iRlqOJYRE5_3AlvbQcOgZbRzQkr358KBNCDYYTFbTOE",
     });
 
     let layers = platform.createDefaultLayers();
