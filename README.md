@@ -3,7 +3,7 @@
 Find route, distance between two points and
 calculate the costs of travel
 
-## #Features
+## Features
 
 1. HERE Geocoding & Search API 7
 2. HERE Maps API for JavaScript
@@ -13,14 +13,14 @@ calculate the costs of travel
 6. Search history
 7. Draggable map
 
-## ##Search page
+## Search page
 
 ![ScreenShot](public/mdUtils/screenshot-search.png)
 
-## ##Map page
+## Map page
 
 ![ScreenShot](public/mdUtils/screenshot-map.png)
 
-## ##Netlify link
+## Netlify link
 
 [-> Find route website - demo](https://reliable-gingersnap-0b799c.netlify.app/)
