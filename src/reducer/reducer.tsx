@@ -1,5 +1,6 @@
 import { CurrentRoute, Action } from "../models/contextModel";
 
+// Reducer for useReducer react hook. Adds and deletes routes to history.
 export function reducer(
   searches: any,
   action: { type: Action; payload: CurrentRoute }

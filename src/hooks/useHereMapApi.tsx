@@ -11,11 +11,13 @@ import {
 import { FetchedData } from "../models/fetchModel";
 import { CurrentRoute } from "../models/contextModel";
 
+//UseHereMaps custom hook with JavaScript functions and classes provided from "@here/maps-api-for-javascript" library; JavaScript functions were optimized to use with React.
 export const useHereMapApi = (data: FetchedData[]) => {
   const { dispatch, setCurrentRoute } = useRouteDetails();
   const refEl = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   useEffect(() => {
+    // Latitudes and longitudes of selected locations received from HERE Geocoding & Search API
     const {
       items: [
         {
@@ -33,12 +35,15 @@ export const useHereMapApi = (data: FetchedData[]) => {
       ],
     } = data[1];
 
+    //H.service.Platform initializes communication with the platform
     //API key is limited to trusted domains.
     const platform = new H.service.Platform({
       apikey: "iRlqOJYRE5_3AlvbQcOgZbRzQkr358KBNCDYYTFbTOE",
     });
 
     let layers = platform.createDefaultLayers();
+
+    //Initializes a map
     let map = new H.Map(refEl.current, layers.vector.normal.map, {
       pixelRatio: window.devicePixelRatio,
       padding: { top: 50, left: 50, bottom: 50, right: 50 },
@@ -50,6 +55,7 @@ export const useHereMapApi = (data: FetchedData[]) => {
 
     if (map) new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
+    //Sends requests to API, receives polyline and travelSummary of current route
     function calculateRouteFromAtoB(platform: H.service.Platform) {
       var router = platform.getRoutingService(undefined, 8),
         routeRequestParams = {
@@ -63,6 +69,7 @@ export const useHereMapApi = (data: FetchedData[]) => {
       router.calculateRoute(routeRequestParams, onSuccess, onError);
     }
 
+    //AddRouteShapeToMap adds route polyline to map, addSummaryToContext collects route summary details and adds them to context.
     function onSuccess(result: any) {
       var route = result.routes[0];
       addRouteShapeToMap(route, map);

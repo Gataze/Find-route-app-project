@@ -1,5 +1,7 @@
 import { SearchFormProps } from "../../../models/contextModel";
 
+//Presentation component that displays search form. Form is used to collect the name of start point and final destination.
+//In next step this data is used to get data necessary to render map and route between selected locations.
 export const SearchForm: React.FC<SearchFormProps> = ({
   places,
   setPlaces,

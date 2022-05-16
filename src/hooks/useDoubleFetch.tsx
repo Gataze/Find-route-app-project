@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ResponseObj } from "../models/fetchModel";
 import { FetchedData } from "../models/fetchModel";
 
+//Standard useFetch hook with multiple async requests. HERE Geocoding & Search API is used to receive latitudes and longitudes of selected locations.
 const useFetch = (url: string, url2: string) => {
   const [state, setState] = useState<ResponseObj>({
     data: null,

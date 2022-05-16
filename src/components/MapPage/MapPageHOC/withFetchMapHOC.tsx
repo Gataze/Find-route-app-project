@@ -3,11 +3,12 @@ import useDoubleFetch from "../../../hooks/useDoubleFetch";
 import { Map } from "../MapPageSections/Map";
 import { FetchedDataProps } from "../../../models/fetchModel";
 
+//HOC that provides context and useFetch hook for map component.
 const withFetchMapHOC = (Map: React.FC<FetchedDataProps>) =>
   function Comp() {
     const { currentRoute } = useRouteDetails();
 
-    //API key limited to trusted domains.
+    //API key is limited to trusted domains.
     const key = "iRlqOJYRE5_3AlvbQcOgZbRzQkr358KBNCDYYTFbTOE";
 
     const startUrl = `https://geocode.search.hereapi.com/v1/geocode?apikey=${key}&q=${currentRoute.start}`;

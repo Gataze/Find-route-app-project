@@ -24,6 +24,7 @@ const MapDetails = createContext<ContextType>({
   getRoute: () => {},
 });
 
+//Use context and useRouteDetails custom hook to share state across React App.
 export function useRouteDetails() {
   const context = useContext(MapDetails);
   if (!context) {
@@ -32,11 +33,15 @@ export function useRouteDetails() {
   return context;
 }
 
+// Context wrapper with functions and values that can be returned from context
 export const RouteDetailsPriovider: React.FC<
   React.HTMLAttributes<HTMLDivElement>
 > = (props: any) => {
   let navigate = useNavigate();
+  //Stores previous searches, useReducer is used to manipulate the state
   const [routesHistory, dispatch] = useReducer(reducer, []);
+
+  //Stores data about current route search
   const [currentRoute, setCurrentRoute] = useState({});
 
   const value = useMemo(() => {

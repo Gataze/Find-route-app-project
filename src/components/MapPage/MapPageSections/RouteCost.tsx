@@ -2,8 +2,12 @@ import { calculateCosts } from "../../../utils/MapUtils";
 import { useRef, useState } from "react";
 import { CurrentRoute } from "../../../models/contextModel";
 
+//Presentation component of RouteCost section. Simple logic included
 export const RouteCost: React.FC<CurrentRoute> = ({ currentRoute }) => {
+  // useRef controls route calculator data input
   const kmCostText = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  // totalCost state stores data about route costs. Calculations are performed using calculateCosts function.
   const [totalCost, setTotalCost] = useState<{
     cost: number | undefined;
     daysOfWork: number | undefined;

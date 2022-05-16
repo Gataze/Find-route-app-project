@@ -8,6 +8,7 @@ import {
   RoutesHistory,
 } from "../../../models/contextModel";
 
+//Presentation component of search history
 export const RouteHistory: React.FC<RoutesHistoryProps> = ({
   routesHistory,
   dispatch,

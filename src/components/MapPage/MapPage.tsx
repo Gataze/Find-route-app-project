@@ -5,11 +5,12 @@ import { useRouteDetails } from "../../context/RouteDetailsProvider";
 import { EnhancedMap } from "./MapPageHOC/withFetchMapHOC";
 import "./MapPageStyles/mapPageStyles.css";
 
+//Map page component wraps Map, and Route calculator sections.
 export function MapPage() {
   const { currentRoute } = useRouteDetails();
 
   return (
-    <div className="mapPage">
+    <section className="mapPage">
       <div className="mapPage__container">
         <h2 className="mapPage__header">Route Planner</h2>
 
@@ -22,6 +23,6 @@ export function MapPage() {
           Go back
         </Link>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,5 +1,6 @@
 import { CurrentRoute } from "../../../models/contextModel";
 
+//Presentation component of RouteDetails section.
 export const RouteDetails: React.FC<CurrentRoute> = ({
   currentRoute: { exactStartPlace, exactStopPlace, duration, distance },
 }) => {
