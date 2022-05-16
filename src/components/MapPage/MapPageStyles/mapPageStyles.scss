@@ -1,5 +1,4 @@
 .mapPage {
-  height: 100vh;
   display: flex;
   flex-flow: column;
   box-sizing: border-box;
@@ -12,7 +11,7 @@
 
   &__header {
     color: rgb(57, 147, 177);
-    font-size: 30px;
+    font-size: 26px;
     margin-top: 8px;
     position: relative;
     &::after {
@@ -52,7 +51,7 @@
 
   &__list {
     margin-bottom: 30px;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   &__button {
@@ -81,6 +80,6 @@
   &__list {
     display: flex;
     flex-flow: column;
-    font-size: 18px;
+    font-size: 16px;
   }
 }

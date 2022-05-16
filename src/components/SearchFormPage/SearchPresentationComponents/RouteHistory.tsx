@@ -15,8 +15,8 @@ export const RouteHistory: React.FC<RoutesHistoryProps> = ({
   return (
     <div className="routeHistory">
       {routesHistory[0] && (
+        <>
           <h2 className="routeHistory__header">Search history</h2>
-        ) && (
           <ol className="routeHistory__list">
             {routesHistory.map((searchItem: RoutesHistory) => (
               <li className="routeHistory__listItem" key={searchItem.id}>
@@ -45,7 +45,8 @@ export const RouteHistory: React.FC<RoutesHistoryProps> = ({
               </li>
             ))}
           </ol>
-        )}
+        </>
+      )}
     </div>
   );
 };

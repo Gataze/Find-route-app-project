@@ -1,7 +1,11 @@
+body {
+  background-color: #eeeeee;
+}
+
 .app {
   margin: 0 auto;
   background-color: #eeeeee;
-  height: 100vh;
+  padding: 20px;
 }
 
 .app__container {

@@ -11,14 +11,14 @@ export const SearchForm: React.FC<SearchFormProps> = ({
       <div className="searchForm__container">
         <div className="searchForm__inputContainer">
           <label className="searchForm__label" htmlFor="start-input">
-            Set a start point:
+            Start point:
           </label>
           <input
             id="start-input"
             type="text"
             className="searchForm__input"
             value={places.start}
-            placeholder="Start location..."
+            placeholder="Enter location..."
             onChange={(e) =>
               setPlaces((prevState: { start: string; stop: string }) => {
                 return { ...prevState, start: e.target.value };
@@ -28,14 +28,14 @@ export const SearchForm: React.FC<SearchFormProps> = ({
         </div>
         <div className="searchForm__inputContainer">
           <label className="searchForm__label" htmlFor="end-input">
-            Set your destination:
+            End point:
           </label>
           <input
             className="searchForm__input"
             id="end-input"
             type="text"
             value={places.stop}
-            placeholder="Stop location..."
+            placeholder="Enter location..."
             onChange={(e) =>
               setPlaces((prevState: { start: string; stop: string }) => {
                 return { ...prevState, stop: e.target.value };

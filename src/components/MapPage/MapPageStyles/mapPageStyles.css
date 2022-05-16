@@ -1,5 +1,4 @@
 .mapPage {
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,7 +18,7 @@
 
 .mapPage__header {
   color: #3993b1;
-  font-size: 30px;
+  font-size: 26px;
   margin-top: 8px;
   position: relative;
 }
@@ -59,7 +58,7 @@
 
 .routeCost__list {
   margin-bottom: 30px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .routeCost__button {
@@ -94,6 +93,6 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  font-size: 18px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=mapPageStyles.css.map */
