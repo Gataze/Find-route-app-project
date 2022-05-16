@@ -19,7 +19,7 @@
 .mapPage__header {
   color: #3993b1;
   font-size: 26px;
-  margin-top: 8px;
+  margin-top: 6px;
   position: relative;
 }
 
@@ -37,7 +37,7 @@
 .routeCost {
   border-top: 1px solid #40b1d6;
   border-bottom: 1px solid #40b1d6;
-  padding: 20px 10px;
+  padding: 17px 10px;
 }
 
 .routeCost__header {
@@ -64,7 +64,7 @@
 .routeCost__button {
   width: 135px;
   margin-right: 30px;
-  height: 40px;
+  height: 35px;
   border: 3px solid #40b1d6;
   font-weight: 600;
   cursor: pointer;
@@ -93,6 +93,6 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  font-size: 16px;
+  font-size: 15px;
 }
 /*# sourceMappingURL=mapPageStyles.css.map */

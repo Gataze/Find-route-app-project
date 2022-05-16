@@ -38,6 +38,9 @@ export const RouteCost: React.FC<CurrentRoute> = ({ currentRoute }) => {
             Standard Price Multiplier: <b>110%</b>
           </li>
           <li className="routeCost__listItem">
+            Day rate: <b>1000 PLN</b>
+          </li>
+          <li className="routeCost__listItem">
             Travel distance allowance per day: <b>800km</b>.
           </li>
           <li className="routeCost__listItem">
