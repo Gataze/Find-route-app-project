@@ -1,7 +1,7 @@
-# FindRoute
+# Find-Route-App
 
-Find route, distance of a location from current location
-Calculate the costs of route
+Find route, distance between two points and
+calculate the costs of travel
 
 ## #Features
 
