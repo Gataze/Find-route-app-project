@@ -44,6 +44,8 @@ export const RouteDetailsPriovider: React.FC<
   //Stores data about current route search
   const [currentRoute, setCurrentRoute] = useState({});
 
+  console.log(currentRoute);
+
   const value = useMemo(() => {
     function getRoute(places: { start: string; stop: string }) {
       if (!places.start && !places.stop) {
